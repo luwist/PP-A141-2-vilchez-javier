@@ -25,6 +25,13 @@ export const routes: Routes = [
             (m) => m.ProductsComponent
           ),
       },
+      {
+        path: 'containers',
+        loadComponent: () =>
+          import('./containers/containers.component').then(
+            (m) => m.ContainersComponent
+          ),
+      },
     ],
   },
 ];

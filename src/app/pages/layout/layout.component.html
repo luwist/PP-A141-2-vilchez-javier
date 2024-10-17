@@ -18,6 +18,12 @@
             <a routerLink="/productos" routerLinkActive="link-secondary" class="nav-link">Productos</a>
           </li>
         }
+
+        @if (currentUser !== null && currentUser.role === 'administrador') {
+          <li class="nav-item">
+            <a routerLink="/containers" routerLinkActive="link-secondary" class="nav-link">Contenedores</a>
+          </li>
+        }
       </ul>
     </div>
 

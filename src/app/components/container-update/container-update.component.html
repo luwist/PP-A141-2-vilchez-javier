@@ -1,0 +1,46 @@
+<div class="border p-4">
+    <div class="">
+      <h4 class="mb-3">Actualizar Contenedor</h4>
+
+      <form class="needs-validation" [formGroup]="form" (submit)="onRegister()">
+        <div class="">
+          <div class="mt-3">
+            <label class="form-label">Codigo</label>
+            <input
+              type="number"
+              [value]="container.id"
+              [disabled]="true"
+              class="form-control"
+              placeholder="Codigo"
+            />
+          </div>
+  
+          <div class="mt-3">
+            <label class="form-label">Capacidad</label>
+            <input
+              type="number"
+              [value]="container.capacity"
+              class="form-control"
+              placeholder="Capacidad"
+              formControlName="capacity"
+            />
+            <app-input-error [control]="getControl('capacity')" />
+          </div>
+  
+          <div class="mt-3">
+            <label class="form-label">Empresa</label>
+            <input
+              type="text"
+              class="form-control"
+              [value]="container.company"
+              placeholder="Empresa"
+              formControlName="company"
+            />
+            <app-input-error [control]="getControl('company')" />
+          </div>
+  
+          <button type="submit" class="btn btn-primary w-100 mt-5">Actualizar</button>
+        </div>
+      </form>
+    </div>
+  </div>

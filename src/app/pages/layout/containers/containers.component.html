@@ -1,0 +1,15 @@
+<ng-template #toast>{{ errorText }}</ng-template>
+
+<div class="container">
+    <app-container-list [items]="containersList" (getItemSelected)="onContainerSelected($event)" />
+
+    <div class="d-flex justify-content-between p-5 pt-0 gap-4">
+        <app-container-register (containerForm)="onRegister($event, toast)" />
+        @if (container !== null) {
+            <app-container-update [container]="container" (containerFormUpdate)="onUpdate($event, toast)" />
+            <app-container-delete [container]="container" (containerFormUpdate)="onDelete($event, toast)" />
+        }
+    </div>
+</div>
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

@@ -1,0 +1,44 @@
+<div class="border p-4">
+  <div class="">
+    <h4 class="mb-3">Alta Contenedor</h4>
+    <form class="needs-validation" [formGroup]="form" (submit)="onRegister()">
+      <div class="">
+        <div class="mt-3">
+          <label class="form-label">Codigo</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Codigo"
+            minlength="0"
+            formControlName="id"
+          />
+          <app-input-error [control]="getControl('id')" />
+        </div>
+
+        <div class="mt-3">
+          <label class="form-label">Capacidad</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Capacidad"
+            formControlName="capacity"
+          />
+          <app-input-error [control]="getControl('capacity')" />
+        </div>
+
+        <div class="mt-3">
+          <label class="form-label">Empresa</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Empresa"
+            formControlName="company"
+          />
+          <app-input-error [control]="getControl('company')" />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-5" [disabled]="(form.statusChanges | async) !== 'VALID'">Crear</button>
+      </div>
+    </form>
+  </div>
+</div>

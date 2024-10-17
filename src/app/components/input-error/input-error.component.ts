@@ -17,6 +17,12 @@ import { AbstractControl } from '@angular/forms';
     <p class="form-text text-danger text-end">
       No cumple con la cantidad minima
     </p>
+    } @if (control.hasError('minLengthNumber')) {
+    <p class="form-text text-danger text-end">
+      No cumple con la cantidad minima
+    </p>
+    } @if (control.hasError('min')) {
+    <p class="form-text text-danger text-end">El numero debe ser mayor a 0</p>
     } }
   `,
 })

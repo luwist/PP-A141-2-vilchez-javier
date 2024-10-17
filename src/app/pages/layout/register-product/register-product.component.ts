@@ -1,10 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, TemplateRef } from '@angular/core';
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   MinValidator,
   ReactiveFormsModule,
+  ValidationErrors,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { InputErrorComponent } from '@app/components';
@@ -36,12 +39,15 @@ export class RegisterProductComponent {
   buttonText: string = 'Dar de alta';
 
   form = new FormGroup({
-    id: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    id: new FormControl('', [
+      Validators.required,
+      this.minLengthNumberValidator(3),
+    ]),
     description: new FormControl('', [
       Validators.required,
       Validators.minLength(10),
     ]),
-    price: new FormControl('', Validators.required),
+    price: new FormControl('', [Validators.required, Validators.min(1)]),
     stock: new FormControl('', Validators.required),
     country: new FormControl('', Validators.required),
   });
@@ -50,6 +56,21 @@ export class RegisterProductComponent {
     private _firestoreService: FirestoreService,
     private _toastService: ToastService
   ) {}
+
+  minLengthNumberValidator(minLength: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (value && value.toString().length < minLength) {
+        return {
+          minLengthNumber: {
+            requiredLength: minLength,
+            actualLength: value.toString().length,
+          },
+        };
+      }
+      return null;
+    };
+  }
 
   getControl(name: string): FormControl {
     return this.form.get(name) as FormControl;
