@@ -1,0 +1,61 @@
+<ng-template #toast>{{ errorText }}</ng-template>
+
+<div class="d-flex gap-4">
+  <div class="col-md-7 col-lg-8">
+    <h4 class="mb-3">Alta Actor</h4>
+    <form class="needs-validation" [formGroup]="form" (submit)="onRegister(toast)">
+      <div class="row g-3">
+        <div class="col-sm-6">
+          <label class="form-label">Codigo</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Codigo"
+            minlength="0"
+            formControlName="id"
+          />
+          <app-input-error [control]="getControl('id')" />
+        </div>
+
+        <div class="col-sm-6">
+          <label class="form-label">Descripcion</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Descripcion"
+            formControlName="description"
+          />
+          <app-input-error [control]="getControl('description')" />
+        </div>
+
+        <div class="col-sm-6">
+          <label class="form-label">Price</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Price"
+            formControlName="price"
+          />
+          <app-input-error [control]="getControl('price')" />
+        </div>
+
+        <div class="col-sm-6">
+          <label class="form-label">Stock</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Stock"
+            formControlName="stock"
+          />
+          <app-input-error [control]="getControl('stock')" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="(form.statusChanges | async) !== 'VALID'">{{ buttonText }}</button>
+      </div>
+    </form>
+  </div>
+
+  <app-country-list (selectItem)="onCountrySelected($event)" />
+</div>
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

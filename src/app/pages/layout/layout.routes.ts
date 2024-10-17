@@ -11,6 +11,20 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./home/home.component').then((m) => m.HomeComponent),
       },
+      {
+        path: 'alta-producto',
+        loadComponent: () =>
+          import('./register-product/register-product.component').then(
+            (m) => m.RegisterProductComponent
+          ),
+      },
+      {
+        path: 'productos',
+        loadComponent: () =>
+          import('./products/products.component').then(
+            (m) => m.ProductsComponent
+          ),
+      },
     ],
   },
 ];

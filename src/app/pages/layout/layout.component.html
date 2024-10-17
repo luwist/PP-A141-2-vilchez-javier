@@ -6,9 +6,16 @@
       <img src="assets/logo.png" alt="" routerLink="/" />
 
       <ul class="nav justify-content-center">
-        @for (item of items; track $index) {
+        <li class="nav-item">
+          <a routerLink="/" routerLinkActive="link-secondary" class="nav-link">Inicio</a>
+        </li>
+        
+        @if (currentUser !== null) {
           <li class="nav-item">
-            <a [routerLink]="item.path" routerLinkActive="link-secondary" class="nav-link">{{ item.label }}</a>
+            <a routerLink="/alta-producto" routerLinkActive="link-secondary" class="nav-link">Alta producto</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/productos" routerLinkActive="link-secondary" class="nav-link">Productos</a>
           </li>
         }
       </ul>
@@ -16,6 +23,8 @@
 
     @if (currentUser == null) {
     <a routerLink="/login" class="btn btn-outline-primary">Iniciar sesión</a>
+    } @else {
+      <button type="button" class="btn btn-outline-primary" (click)="onLogout()">Cerrar sesión</button>
     }
   </header>
 

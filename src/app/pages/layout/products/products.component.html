@@ -1,0 +1,12 @@
+<div class="container">
+    <app-product-table (getItemSelected)="onProductSelected($event)" />
+
+    <div class="d-flex justify-content-between p-5 pt-0 gap-4">
+        @if (product) {
+            <app-product-detail [product]="product" />
+            <app-country-detail [country$]="country$" />
+        } @else {
+            <p class="p-4 text-center border m-0 w-100">Seleccione un producto para mostrar los detalles.</p>
+        }
+    </div>
+</div>

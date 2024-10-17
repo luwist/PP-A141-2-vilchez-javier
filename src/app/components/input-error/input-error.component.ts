@@ -13,6 +13,10 @@ import { AbstractControl } from '@angular/forms';
     <p class="form-text text-danger text-end">
       El correo electronico es incorrecto
     </p>
+    } @if (control.hasError('minlength')) {
+    <p class="form-text text-danger text-end">
+      No cumple con la cantidad minima
+    </p>
     } }
   `,
 })

@@ -10,16 +10,13 @@ import { AuthService } from '@app/services';
   styleUrl: './layout.component.css',
 })
 export class LayoutComponent {
-  items: any = [
-    {
-      path: '/example',
-      label: 'Ejemplo',
-    },
-  ];
-
-  currentUser: any;
+  currentUser: any = null;
 
   constructor(authService: AuthService) {
     this.currentUser = authService.currentUser;
+  }
+
+  onLogout(): void {
+    this.currentUser = null;
   }
 }

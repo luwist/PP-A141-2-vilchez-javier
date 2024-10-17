@@ -34,6 +34,12 @@ export class LoginComponent implements OnDestroy {
       password: '123456',
       role: 'administrador',
     },
+    {
+      id: 1,
+      email: 'empleado@empleado.com',
+      password: '123456',
+      role: 'empleado',
+    },
   ];
 
   loginForm = new FormGroup({

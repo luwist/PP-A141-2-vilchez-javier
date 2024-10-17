@@ -1,0 +1,11 @@
+<div class="border p-4 w-100">
+    <p class="m-0 mb-3 fw-bold fs-5">Detalle del producto</p>
+    @if (product) {
+        <p><span class="fw-medium">Codigo:</span> {{ product.id }}</p>
+        <p><span class="fw-medium">Descripcion:</span> {{ product.description }}</p>
+        <p><span class="fw-medium">Precio:</span> {{ product.price }}</p>
+        <p><span class="fw-medium">Stock:</span> {{ product.stock }}</p>
+    } @else {
+        <p class="m-0">Seleccione un producto</p>
+    }
+</div>
